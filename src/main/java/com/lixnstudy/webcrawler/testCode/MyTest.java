@@ -40,19 +40,23 @@ public class MyTest {
         Document document = Jsoup.parse(html);
         Elements pics = document.select("div.pic>a");// 图片链接
         System.out.println(pics.size());
-        int count = 0;
-        for (Element pic : pics) {
-            if (count == 2) {
-                break;
-            }
-            String picLink = pic.attr("href");
-            System.out.println(picLink);
-            HttpResponse res = client.execute(generateGetRequest(picLink));
-            String source = EntityUtils.toString(res.getEntity(), "UTF-8");
-            System.out.println(source);
-            System.out.println(count + "try, result is " + res.getStatusLine().getStatusCode());
-            count++;
+        for (Element picLink : pics) {
+            System.out.println(picLink.attr("href"));
         }
+//        int count = 0;
+//        for (Element pic : pics) {
+//            if (count == 5) {
+//                break;
+//            }
+//            String picLink = pic.attr("href");
+//            System.out.println(picLink);
+//            count++;
+////            HttpResponse res = client.execute(generateGetRequest(picLink));
+////            String source = EntityUtils.toString(res.getEntity(), "UTF-8");
+////            System.out.println(source);
+////            System.out.println(count + "try, result is " + res.getStatusLine().getStatusCode());
+////            count++;
+//        }
 
 
 
